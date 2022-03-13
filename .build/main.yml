@@ -165,8 +165,8 @@ stages:
           value: github.com/chrisism/repository.chrisism.dev.git
         - name: repository_name
           value: repository.chrisism.dev
-          value: 'matrix'
         - name: repository_data_dir
+          value: 'matrix'
         - name: branch_name
           value: main
 
