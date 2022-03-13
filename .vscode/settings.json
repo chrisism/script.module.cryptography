@@ -1,0 +1,30 @@
+ {
+    "files.exclude": { 
+        "**/__pycache__/":true, 
+        "**/.pytest_cache/":true,
+        "**/.cache/":true, 
+        "**/*.pyc":true    
+    },
+    "search.exclude": {
+        "**/*.pyc": true
+    },
+    "pythonTestExplorer.testFramework": "pytest",
+    "python.envFile": "${workspaceFolder}/.vscode/.env",
+    "python.testing.pytestEnabled": true, 
+    "python.testing.pytestArgs": [
+        "-c",
+        "${workspaceFolder}/.vscode/pytest.ini",
+        "tests"
+    ], 
+    "python.linting.ignorePatterns":[
+        ".vscode/*.py",
+        "**/site-packages/**/*.py"
+    ],
+    "python.analysis.diagnosticMode": "workspace",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "terminal.integrated.env.linux": {
+        "ADDON_KODI_DIR": "/home/cwjungerius/projects/addons/",
+        "ADDON_NAME":"script.module.cryptography",
+        "ADDON_SRCPATHS": "**/*.py:**/*.md:**/*.xml:*.txt:media/**/*.*:!tests/**/*.*:!tools/**/*.*:!build/**/*.*:!__pycache__/**/*.*"
+    }
+}
