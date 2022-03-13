@@ -40,6 +40,9 @@ stages:
         inputs:
           versionSpec: '5.x'
 
+      - task: gitversion/execute@0
+        displayName: 'Executing gitversion'
+
       - script: |
             echo '##vso[task.setvariable variable=addonVersion]$(GitVersion.Major).$(GitVersion.Minor).$(GitVersion.Patch)~$(GitVersion.PreReleaseLabel)$(GitVersion.PreReleaseNumber)
             echo '##vso[task.setvariable variable=tagVersion]$(GitVersion.LegacySemVer)
