@@ -94,9 +94,9 @@ stages:
       - task: CopyFiles@2
         displayName: 'Copy module files for package'
         inputs:
-          SourceFolder: ''
+          SourceFolder: 'module/cryptography/src/cryptography'
           Contents: |
-              module/cryptography/src/cryptography/**/*.*
+              **/*.*
               !**/*.pyc
               !**/__pycache__/**/*.*
           TargetFolder: '$(build.artifactstagingdirectory)/$(addonName)/lib/cryptography'
