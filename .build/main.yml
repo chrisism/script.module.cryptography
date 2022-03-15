@@ -111,6 +111,29 @@ stages:
             steps:
               - download: current
                 displayName: 'Downloading addon artifact'
+
+              - script: |
+                  git clone https://$(repository_url)
+                workingDirectory: $(Pipeline.Workspace)/
+                displayName: 'Clone git repository'
+
+              - script: |
+                  git config user.email $(git_emailAddress)
+                  git config user.name $(git_userName)
+                workingDirectory: $(Pipeline.Workspace)/$(repository_name)
+                displayName: 'Configure git settings'
+
+              - task: UsePythonVersion@0
+                displayName: 'Use Python 3.x'
+
+              - task: PipAuthenticate@0
+                displayName: Authenticate with artifact feed
+                inputs:
+                  artifactFeeds: AKL/akl_libs
+                  
+              - bash: |
+                  pip install kodi.tools
+                displayName: pip install    
               
               - template: publish_in_repository_steps.yml
                 parameters:
@@ -118,6 +141,17 @@ stages:
               - template: publish_in_repository_steps.yml
                 parameters:
                   packageType: 'android'
+
+              - script: |
+                  git add .
+                  git commit -m "$(Build.DefinitionName) Release $(Build.BuildNumber)"
+                workingDirectory: $(Pipeline.Workspace)/$(repository_name)/
+                displayName: 'Git - Add and commit'    
+
+              - script: |
+                  git push https://$(github_token)@$(repository_url) $(branch_name) 
+                workingDirectory: $(Pipeline.Workspace)/$(repository_name)/
+                displayName: 'Git - Push'    
 
 # - stage: DeployProd
 #   displayName: Deployment on Production
