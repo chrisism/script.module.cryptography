@@ -109,7 +109,15 @@ stages:
         runOnce:
           deploy:
             steps:
+              - download: current
+                displayName: 'Downloading addon artifact'
+              
               - template: publish_in_repository_steps.yml
+                parameters:
+                  packageType: 'all'
+              - template: publish_in_repository_steps.yml
+                parameters:
+                  packageType: 'android'
 
 # - stage: DeployProd
 #   displayName: Deployment on Production
