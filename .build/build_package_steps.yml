@@ -6,14 +6,14 @@ parameters:
   default: 'all'
 
 steps:
-  - ${{ if eq(parameters.packageType, 'all') }}:
-    - task: RegExMatchReplace@2
-      displayName: 'Change id'
-      inputs:
-        PathToFile: 'addon.xml'
-        RegEx: 'id=".*" name'
-        ValueToReplace: 'id="$(addonName).${{parameters.packageType}}" name'
+  - task: RegExMatchReplace@2
+    displayName: 'Change id'
+    inputs:
+      PathToFile: 'addon.xml'
+      RegEx: 'id=".*" name'
+      ValueToReplace: 'id="$(addonName).${{parameters.packageType}}" name'
 
+  - ${{ if eq(parameters.packageType, 'android') }}:
     - task: RegExMatchReplace@2
       displayName: 'Change platform'
       inputs:
