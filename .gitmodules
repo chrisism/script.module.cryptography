@@ -1,0 +1,6 @@
+[submodule "modules/all/cryptography"]
+	path = modules/all/cryptography
+	url = https://github.com/pyca/cryptography
+[submodule "modules/android/cryptography"]
+	path = modules/android/cryptography
+	url = https://android.googlesource.com/platform/external/python/cryptography
