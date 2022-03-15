@@ -11,7 +11,7 @@ steps:
       displayName: 'Change id'
       inputs:
         PathToFile: 'addon.xml'
-          RegEx: 'id=".*" name'
+        RegEx: 'id=".*" name'
         ValueToReplace: 'id="$(addonName).${{parameters.packageType}}" name'
 
     - task: RegExMatchReplace@2
