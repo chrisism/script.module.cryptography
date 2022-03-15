@@ -37,14 +37,14 @@ steps:
   - task: CopyFiles@2
     displayName: 'Copy addon into git repository'
     inputs:
-      SourceFolder: '$(Pipeline.Workspace)/$(addonName).${{parameter.packageType}}'
+      SourceFolder: '$(Pipeline.Workspace)/$(addonName).${{parameters.packageType}}'
       Contents: '**/*.*'
-      TargetFolder: '$(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/$(addonName).${{parameter.packageType}}'
+      TargetFolder: '$(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/$(addonName).${{parameters.packageType}}'
       CleanTargetFolder: false
       flattenFolders: false
       OverWrite: true
   
-  - bash: merge_addon_xml $(addonName).${{parameter.packageType}} $(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/addons.xml $(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/$(addonName).${{parameter.packageType}}/addon.xml
+  - bash: merge_addon_xml $(addonName).${{parameters.packageType}} $(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/addons.xml $(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/$(addonName).${{parameters.packageType}}/addon.xml
     displayName: 'Merge addon xml files for repository'
     workingDirectory: '$(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/'
       
@@ -54,7 +54,7 @@ steps:
 
   - script: |
       git add .
-      git commit -m "$(Build.DefinitionName) Release $(Build.BuildNumber) (${{parameter.packageType}})"
+      git commit -m "$(Build.DefinitionName) Release $(Build.BuildNumber) (${{parameters.packageType}})"
     workingDirectory: $(Pipeline.Workspace)/$(repository_name)/
     displayName: 'Git - Add and commit'    
 
