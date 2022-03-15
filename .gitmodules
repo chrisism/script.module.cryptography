@@ -1,3 +1,0 @@
-[submodule "module/cryptography"]
-	path = module/cryptography
-	url = https://github.com/pyca/cryptography
