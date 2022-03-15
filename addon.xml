@@ -2,12 +2,19 @@
 <addon id="script.module.cryptography" name="script.module.cryptography" version="36.0.2" provider-name="chrisism">
   <requires>
       <import addon="xbmc.python" version="3.0.0"/>
+      <import addon="script.module.idna" version="2.5"/>
+      <import addon="script.module.abi" version="0.0.1"/>
+      <import addon="script.module.six" version="1.15.0"/>
+      <import addon="script.module.cffi" version="1.10.0"/>
+      <import addon="script.module.ipaddress" version="1.0.18"/>
+      <import addon="script.module.pyasn1" version="0.2.3"/>
+      <import addon="script.module.enum" version="0.4.6"/>
   </requires>
   <extension point="xbmc.python.module" library="lib"/>
   <extension point="xbmc.addon.metadata">
     <summary lang="en_GB">Python ibrary module for cryptography.</summary>
     <description lang="en_GB">Python module to be used as a library for cryptography.</description>
-    <platform>android freebsd ios linux osx windows</platform>
+    <platform>freebsd ios linux osx windows</platform>
     <license>Apache BSD</license>
     <email>crizizz@gmail.com</email>
     <website>https://github.com/pyca/cryptography</website>
